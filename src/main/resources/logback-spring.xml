@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOG_DIRECTORY" value="logs"/>
+    <property name="LOG_FILE_NAME" value="springBootCRUD"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd'T'HH:mm:ss, UTC} [%thread] %-5level %logger %M\(%line\) - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <appender name="SPRINGBOOT_CRUD_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIRECTORY}/${LOG_FILE_NAME}.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                %d{yyyy-MM-dd'T'HH:mm:ss, UTC} [%thread] %-5level %logger %M\(%line\) - %msg%n
+            </Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <FileNamePattern>${LOG_DIRECTORY}/archived/${LOG_FILE_NAME}.%d{yyyy-MM-dd}.%i.log.gz
+            </FileNamePattern>
+            <!-- keep 15 days' worth of history -->
+            <MaxHistory>15</MaxHistory>
+            <!-- or whenever the file size reaches 10MB -->
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="GRAYLOG_APPENDER" class="de.siegmar.logbackgelf.GelfUdpAppender">
+        <graylogHost>localhost</graylogHost>
+        <graylogPort>12201</graylogPort>
+        <maxChunkSize>508</maxChunkSize>
+        <useCompression>true</useCompression>
+        <layout class="de.siegmar.logbackgelf.GelfLayout">
+            <includeRawMessage>false</includeRawMessage>
+            <includeMarker>true</includeMarker>
+            <includeMdcData>true</includeMdcData>
+            <includeCallerData>false</includeCallerData>
+            <includeRootCauseData>false</includeRootCauseData>
+            <includeLevelName>false</includeLevelName>
+            <shortPatternLayout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>%d{yyyy-MM-dd'T'HH:mm:ss, UTC} [%thread] %-5level %logger %M\(%line\) - %msg%n</pattern>
+            </shortPatternLayout>
+            <fullPatternLayout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>%m</pattern>
+            </fullPatternLayout>
+            <staticField>_facility:springbootCRUD</staticField>
+        </layout>
+    </appender>
+
+    <logger name="com.funkyganesha" level="info" additivity="false">
+        <appender-ref ref="GRAYLOG_APPENDER"/>
+        <appender-ref ref="SPRINGBOOT_CRUD_APPENDER"/>
+    </logger>
+
+    <logger name="org.springframework" level="error" additivity="false">
+        <appender-ref ref="GRAYLOG_APPENDER"/>
+        <appender-ref ref="SPRINGBOOT_CRUD_APPENDER"/>
+    </logger>
+
+</configuration>

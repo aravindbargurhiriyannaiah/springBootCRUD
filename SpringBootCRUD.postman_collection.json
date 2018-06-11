@@ -1,0 +1,331 @@
+{
+	"info": {
+		"_postman_id": "3383862b-3c25-43fa-89b6-64662e617dcb",
+		"name": "SpringBootCRUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Delete all cars",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c418be2d-d904-4ec1-adb2-0961a8a43c87",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:13001/v1/deleteAllCars",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "13001",
+					"path": [
+						"v1",
+						"deleteAllCars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Car 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1498deb0-be01-483a-9cb5-b16e2f33f9f6",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"companyName\" : \"Honda\",\n\t\"year\" : 2006,\n\t\"name\" : \"Accord\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:13001/v1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "13001",
+					"path": [
+						"v1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Car 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1498deb0-be01-483a-9cb5-b16e2f33f9f6",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"companyName\" : \"Toyota\",\n\t\"year\" : 2009,\n\t\"name\" : \"Camry\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:13001/v1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "13001",
+					"path": [
+						"v1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Car 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1498deb0-be01-483a-9cb5-b16e2f33f9f6",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"companyName\" : \"Nissan\",\n\t\"year\" : 2018,\n\t\"name\" : \"Altima\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:13001/v1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "13001",
+					"path": [
+						"v1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Car 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1498deb0-be01-483a-9cb5-b16e2f33f9f6",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"companyName\" : \"Jeep\",\n\t\"year\" : 2016,\n\t\"name\" : \"Cherokee\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:13001/v1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "13001",
+					"path": [
+						"v1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Car",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8e65a80b-2fe4-4f1e-81de-03febb9d4f60",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Cherokee\");",
+							"    pm.expect(pm.response.text()).to.include(\"Jeep\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"companyName\" : \"Jeep\",\n\t\"year\" : 2016,\n\t\"name\" : \"Cherokee\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:13001/v1/2016",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "13001",
+					"path": [
+						"v1",
+						"2016"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get git health",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8e65a80b-2fe4-4f1e-81de-03febb9d4f60",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Cherokee\");",
+							"    pm.expect(pm.response.text()).to.include(\"Jeep\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"companyName\" : \"Jeep\",\n\t\"year\" : 2016,\n\t\"name\" : \"Cherokee\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:13001/v1/2016",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "13001",
+					"path": [
+						"v1",
+						"2016"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d29d87f0-94e4-4ef7-af9d-205ad1ff1391",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2089afc9-8a30-4e45-a208-5b44edba8a24",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
